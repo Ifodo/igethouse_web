@@ -143,11 +143,12 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
   }
   
   .modal-content {
     background-color: #fff;
-    margin: 10% auto;
     padding: 30px;
     border-radius: 8px;
     width: 90%;
@@ -324,6 +325,7 @@ const errorMessage = document.getElementById("errorMessage");
 
 function closeModal() {
   successModal.style.display = "none";
+  document.body.style.overflow = "auto";
   // Reset form
   form.reset();
   form.style.display = "block";
@@ -383,7 +385,10 @@ form.addEventListener("submit", async (e) => {
       // Success - show download modal
       console.log("Showing success modal");
       form.style.display = "none";
-      successModal.style.display = "block";
+      successModal.style.display = "flex";
+      successModal.style.visibility = "visible";
+      successModal.style.opacity = "1";
+      document.body.style.overflow = "hidden";
     } else {
       // Error - show error modal with backend message
       console.log("Showing error modal");
